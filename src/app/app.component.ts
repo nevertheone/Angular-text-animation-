@@ -25,8 +25,7 @@ export class AppComponent {
     this.init();
   }
   public submitinputvalues() {
-    this.inputText = this.textLines[];
-    this.textLines = [''];
+    this.textLines = ['']; // Kleiner bug noch, wenn ich x und 10 eingebe, kommt x mit 10 leerzeichen, wenn ich dann das gleiche nochmal mache aber nicht x mit 10 sondern x mit 20
     this.init();
   }
 
