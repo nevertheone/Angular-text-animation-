@@ -25,8 +25,11 @@ export class AppComponent {
     this.init();
   }
   public submitinputvalues() {
-    this.textLines = ['']; // Kleiner bug noch, wenn ich x und 10 eingebe, kommt x mit 10 leerzeichen, wenn ich dann das gleiche nochmal mache aber nicht x mit 10 sondern x mit 20
+    this.textLines = [''];
     this.init();
+    this.textLines.pop();
+    this.textLines.shift();
+    this.textLines.push(this.inputText);
   }
 
   private pushTextToLineEnd(): void {
@@ -37,9 +40,25 @@ export class AppComponent {
     for (let i = 0; i < this.lineMax; i++) {
       this.inputText = this.inputText + this.fillUpSign;
     }
+    this.pushTextToLineEnd();
   }
   private init() {
     this.fillTextUpToMaximum();
+    this.callfillfunction();
+  }
+  private callfillfunction() {
+    for (let i = 0; i < this.lineMax; i++) {
+      this.inputText = this.fillUpSign + this.inputText;
+      this.inputText = this.inputText.slice(0, -1);
+      this.pushTextToLineEnd();
+    }
+    for (let i = this.lineMax; i > 0; i--) {
+      this.backwardsmovement();
+    }
+  }
+  private backwardsmovement() {
+    this.inputText = this.inputText.substring(1);
+    this.inputText = this.inputText + this.fillUpSign;
     this.pushTextToLineEnd();
   }
 }
