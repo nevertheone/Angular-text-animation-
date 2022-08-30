@@ -18,6 +18,7 @@ import { Component, Input, VERSION } from '@angular/core';
 export class AppComponent {
   public lineMax: number = 0;
   public fillUpSign: string = ' '; // Verwende dieses Zeichen um Aufzufüllen. Kein normales Leerzeichen
+  public inputTextfinalvalue: string = 'Das ist mein Text';
   public inputText: string = 'Das ist mein Text';
   public textLines = [''];
 
@@ -25,10 +26,10 @@ export class AppComponent {
     this.init();
   }
   public submitinputvalues() {
-    this.textLines = [''];
-    this.init();
     this.textLines.pop();
     this.textLines.shift();
+    this.textLines = [''];
+    this.init();
   }
 
   private pushTextToLineEnd(): void {
