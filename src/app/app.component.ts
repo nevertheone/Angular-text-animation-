@@ -33,23 +33,26 @@ export class AppComponent {
   }
 
   private pushTextToLineEnd(): void {
-    this.textLines.push(this.inputText);
+    this.textLines.push(this.inputTextfinalvalue);
   }
 
   private fillTextUpToMaximum(): void {
     for (let i = 0; i < this.lineMax; i++) {
-      this.inputText = this.inputText + this.fillUpSign;
+      this.inputTextfinalvalue = this.inputTextfinalvalue + this.fillUpSign;
     }
     this.pushTextToLineEnd();
   }
+
   private init() {
+    this.inputTextfinalvalue = this.inputText;
     this.fillTextUpToMaximum();
     this.callfillfunction();
   }
+
   private callfillfunction() {
     for (let i = 0; i < this.lineMax; i++) {
-      this.inputText = this.fillUpSign + this.inputText;
-      this.inputText = this.inputText.slice(0, -1);
+      this.inputTextfinalvalue = this.fillUpSign + this.inputTextfinalvalue;
+      this.inputTextfinalvalue = this.inputTextfinalvalue.slice(0, -1);
       this.pushTextToLineEnd();
     }
     for (let i = this.lineMax; i > 0; i--) {
@@ -57,8 +60,8 @@ export class AppComponent {
     }
   }
   private backwardsmovement() {
-    this.inputText = this.inputText.substring(1);
-    this.inputText = this.inputText + this.fillUpSign;
+    this.inputTextfinalvalue = this.inputTextfinalvalue.substring(1);
+    this.inputTextfinalvalue = this.inputTextfinalvalue + this.fillUpSign;
     this.pushTextToLineEnd();
   }
 }
