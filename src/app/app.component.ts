@@ -29,7 +29,6 @@ export class AppComponent {
     this.init();
     this.textLines.pop();
     this.textLines.shift();
-    this.textLines.push(this.inputText);
   }
 
   private pushTextToLineEnd(): void {
