@@ -21,6 +21,7 @@ export class AppComponent {
   public inputTextfinalvalue: string = 'Das ist mein Text';
   public inputText: string = 'Das ist mein Text';
   public textLines = [''];
+  public fillText: string;
 
   constructor() {
     this.init();
@@ -40,6 +41,7 @@ export class AppComponent {
     for (let i = 0; i < this.lineMax; i++) {
       this.inputTextfinalvalue = this.inputTextfinalvalue + this.fillUpSign;
     }
+    this.fillText = this.inputTextfinalvalue;
     this.pushTextToLineEnd();
   }
 
@@ -52,8 +54,6 @@ export class AppComponent {
   private callfillfunction() {
     for (let i = 0; i < this.lineMax; i++) {
       this.inputTextfinalvalue = this.fillUpSign + this.inputTextfinalvalue;
-      this.inputTextfinalvalue = this.inputTextfinalvalue.slice(0, -1);
-      this.pushTextToLineEnd();
     }
     for (let i = this.lineMax; i > 0; i--) {
       this.backwardsmovement();
