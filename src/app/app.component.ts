@@ -16,13 +16,11 @@ import { Component, Input, VERSION } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  public multiplefillups: string = ' ';
-  public lineMax: number = 0;
+  public lineMax: number = 40;
   public fillUpSign: string = ' '; // Verwende dieses Zeichen um Aufzufüllen. Kein normales Leerzeichen
   public inputTextfinalvalue: string = 'Das ist mein Text';
   public inputText: string = 'Das ist mein Text';
   public textLines = [''];
-  public b: number = 0;
 
   constructor() {
     this.init();
@@ -31,11 +29,7 @@ export class AppComponent {
     if (this.inputText.length > this.lineMax) {
       alert('beep');
     }
-    this.textLines.pop();
-    this.textLines.shift();
-    this.textLines = [''];
     this.init();
-    console.log(this.inputTextfinalvalue);
   }
 
   private pushTextToLineEnd(): void {
@@ -56,27 +50,27 @@ export class AppComponent {
   }
 
   private callfillfunction() {
-    for (
-      let i = 1;
-      i < this.inputTextfinalvalue.length - this.inputText.length;
-      i++
-    ) {}
-    console.log(this.multiplefillups);
-    this.inputTextfinalvalue =
-      this.inputTextfinalvalue.substring(
-        0,
-        this.inputTextfinalvalue.indexOf(' ') - 1
-      ) +
-      this.fillUpSign +
-      this.inputTextfinalvalue.substring(
-        this.inputTextfinalvalue.indexOf(' ') - 1
-      );
+    const countSpaces = this.inputTextfinalvalue.length - this.inputText.length;
+    const indexToInsert = this.inputTextfinalvalue.indexOf(' ') - 1;
 
-    this.pushTextToLineEnd();
-  }
-  private backwardsmovement() {
-    this.inputTextfinalvalue = this.inputTextfinalvalue.substring(1);
-    this.inputTextfinalvalue = this.inputTextfinalvalue + this.fillUpSign;
-    this.pushTextToLineEnd();
+    for (let i = 0; i < countSpaces; i++) {
+      this.inputTextfinalvalue =
+        this.inputTextfinalvalue.substring(
+          0,
+          indexToInsert //Das ist mein Tex
+        ) + //  +
+        this.fillUpSign + // " " Und das hier muss geloopt werden
+        this.inputTextfinalvalue.substring(
+          //  +
+          indexToInsert //t + Die fillupsigns
+        );
+      this.inputTextfinalvalue = this.inputTextfinalvalue.slice(0, -1);
+      this.pushTextToLineEnd();
+    }
+    if (this.inputTextfinalvalue.startsWith(' ')) {
+      return;
+    } else {
+      this.callfillfunction();
+    }
   }
 }
