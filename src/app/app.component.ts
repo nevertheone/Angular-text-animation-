@@ -55,6 +55,10 @@ export class AppComponent {
 
   private callfillfunction() {
     for (let i = 0; i < this.lineMax - this.inputText.length; i++) {
+      this.inputTextfinalvalue = this.inputTextfinalvalue.slice(0, -1);
+      this.pushTextToLineEnd();
+    }
+    do {
       this.inputTextfinalvalue =
         this.inputTextfinalvalue.substring(
           0,
@@ -64,9 +68,7 @@ export class AppComponent {
         this.inputTextfinalvalue.substring(
           this.inputTextfinalvalue.indexOf(' ') - 1
         );
-      this.inputTextfinalvalue = this.inputTextfinalvalue.slice(0, -1);
-      this.pushTextToLineEnd();
-    }
+    } while (this.inputTextfinalvalue.endsWith(' '));
     for (let i = this.lineMax - this.inputText.length; i > 0; i--) {
       this.backwardsmovement();
     }
