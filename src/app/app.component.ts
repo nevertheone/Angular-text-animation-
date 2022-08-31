@@ -60,18 +60,18 @@ export class AppComponent {
       let i = 1;
       i < this.inputTextfinalvalue.length - this.inputText.length;
       i++
-    ) {
-      console.log(this.multiplefillups);
-      this.inputTextfinalvalue =
-        this.inputTextfinalvalue.substring(
-          0,
-          this.inputTextfinalvalue.indexOf(' ') - 1
-        ) +
-        this.fillUpSign +
-        this.inputTextfinalvalue.substring(
-          this.inputTextfinalvalue.indexOf(' ') - 1
-        );
-    }
+    ) {}
+    console.log(this.multiplefillups);
+    this.inputTextfinalvalue =
+      this.inputTextfinalvalue.substring(
+        0,
+        this.inputTextfinalvalue.indexOf(' ') - 1
+      ) +
+      this.fillUpSign +
+      this.inputTextfinalvalue.substring(
+        this.inputTextfinalvalue.indexOf(' ') - 1
+      );
+
     this.pushTextToLineEnd();
   }
   private backwardsmovement() {
