@@ -26,10 +26,14 @@ export class AppComponent {
     this.init();
   }
   public submitinputvalues() {
+    if (this.inputText.length > this.lineMax) {
+      alert('beep');
+    }
     this.textLines.pop();
     this.textLines.shift();
     this.textLines = [''];
     this.init();
+    console.log(this.inputTextfinalvalue);
   }
 
   private pushTextToLineEnd(): void {
@@ -37,7 +41,7 @@ export class AppComponent {
   }
 
   private fillTextUpToMaximum(): void {
-    for (let i = 0; i < this.lineMax; i++) {
+    for (let i = 0; i < this.lineMax - this.inputText.length; i++) {
       this.inputTextfinalvalue = this.inputTextfinalvalue + this.fillUpSign;
     }
     this.pushTextToLineEnd();
@@ -50,12 +54,12 @@ export class AppComponent {
   }
 
   private callfillfunction() {
-    for (let i = 0; i < this.lineMax; i++) {
+    for (let i = 0; i < this.lineMax - this.inputText.length; i++) {
       this.inputTextfinalvalue = this.fillUpSign + this.inputTextfinalvalue;
       this.inputTextfinalvalue = this.inputTextfinalvalue.slice(0, -1);
       this.pushTextToLineEnd();
     }
-    for (let i = this.lineMax; i > 0; i--) {
+    for (let i = this.lineMax - this.inputText.length; i > 0; i--) {
       this.backwardsmovement();
     }
   }
