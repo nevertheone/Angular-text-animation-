@@ -31,6 +31,9 @@ export class AppComponent {
     this.textLines.shift();
     this.textLines = [''];
     this.init();
+    console.log(this.fillText);
+    console.log(this.inputText);
+    console.log(this.inputTextfinalvalue);
   }
 
   private pushTextToLineEnd(): void {
@@ -55,6 +58,8 @@ export class AppComponent {
     for (let i = 0; i < this.lineMax; i++) {
       this.inputTextfinalvalue = this.fillUpSign + this.inputTextfinalvalue;
     }
+    this.fillText = this.fillText.substring(this.fillText.indexOf(' ') - 1);
+    this.fillText = this.fillUpSign + this.fillText;
     for (let i = this.lineMax; i > 0; i--) {
       this.backwardsmovement();
     }
