@@ -21,18 +21,18 @@ export class AppComponent {
   public inputTextfinalvalue: string = 'Das ist mein Text';
   public inputText: string = 'Das ist mein Text';
   public textLines = [''];
-  public fillText: string;
 
   constructor() {
     this.init();
   }
   public submitinputvalues() {
+    if (this.inputText.length > this.lineMax) {
+      alert('beep');
+    }
     this.textLines.pop();
     this.textLines.shift();
     this.textLines = [''];
     this.init();
-    console.log(this.fillText);
-    console.log(this.inputText);
     console.log(this.inputTextfinalvalue);
   }
 
@@ -41,10 +41,9 @@ export class AppComponent {
   }
 
   private fillTextUpToMaximum(): void {
-    for (let i = 0; i < this.lineMax; i++) {
+    for (let i = 0; i < this.lineMax - this.inputText.length; i++) {
       this.inputTextfinalvalue = this.inputTextfinalvalue + this.fillUpSign;
     }
-    this.fillText = this.inputTextfinalvalue;
     this.pushTextToLineEnd();
   }
 
@@ -55,12 +54,20 @@ export class AppComponent {
   }
 
   private callfillfunction() {
-    for (let i = 0; i < this.lineMax; i++) {
-      this.inputTextfinalvalue = this.fillUpSign + this.inputTextfinalvalue;
+    for (let i = 0; i < this.lineMax - this.inputText.length; i++) {
+      this.inputTextfinalvalue =
+        this.inputTextfinalvalue.substring(
+          0,
+          this.inputTextfinalvalue.indexOf(' ') - 1
+        ) +
+        this.fillUpSign +
+        this.inputTextfinalvalue.substring(
+          this.inputTextfinalvalue.indexOf(' ') - 1
+        );
+      this.inputTextfinalvalue = this.inputTextfinalvalue.slice(0, -1);
+      this.pushTextToLineEnd();
     }
-    this.fillText = this.fillText.substring(this.fillText.indexOf(' ') - 1);
-    this.fillText = this.fillUpSign + this.fillText;
-    for (let i = this.lineMax; i > 0; i--) {
+    for (let i = this.lineMax - this.inputText.length; i > 0; i--) {
       this.backwardsmovement();
     }
   }
