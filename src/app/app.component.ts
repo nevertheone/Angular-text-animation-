@@ -16,11 +16,13 @@ import { Component, Input, VERSION } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  public multiplefillups: string = ' ';
   public lineMax: number = 0;
   public fillUpSign: string = ' '; // Verwende dieses Zeichen um Aufzufüllen. Kein normales Leerzeichen
   public inputTextfinalvalue: string = 'Das ist mein Text';
   public inputText: string = 'Das ist mein Text';
   public textLines = [''];
+  public b: number = 0;
 
   constructor() {
     this.init();
@@ -55,10 +57,11 @@ export class AppComponent {
 
   private callfillfunction() {
     for (
-      let i = 0;
+      let i = 1;
       i < this.inputTextfinalvalue.length - this.inputText.length;
       i++
     ) {
+      console.log(this.multiplefillups);
       this.inputTextfinalvalue =
         this.inputTextfinalvalue.substring(
           0,
@@ -69,9 +72,7 @@ export class AppComponent {
           this.inputTextfinalvalue.indexOf(' ') - 1
         );
     }
-    for (let i = this.lineMax - this.inputText.length; i > 0; i--) {
-      this.backwardsmovement();
-    }
+    this.pushTextToLineEnd();
   }
   private backwardsmovement() {
     this.inputTextfinalvalue = this.inputTextfinalvalue.substring(1);
