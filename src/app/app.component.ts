@@ -52,7 +52,6 @@ export class AppComponent {
   private callfillfunction() {
     const countSpaces = this.inputTextfinalvalue.length - this.inputText.length;
     const indexToInsert = this.inputTextfinalvalue.indexOf(' ') - 1;
-
     for (let i = 0; i < countSpaces; i++) {
       this.inputTextfinalvalue =
         this.inputTextfinalvalue.substring(0, indexToInsert) +
@@ -60,8 +59,8 @@ export class AppComponent {
         this.inputTextfinalvalue.substring(indexToInsert);
       this.pushTextToLineEnd();
     }
-    if (this.inputTextfinalvalue.startsWith(' ')) {
-      this.inputTextfinalvalue = this.inputTextfinalvalue.slice(0, -1);
+    if (this.inputTextfinalvalue.endsWith(' ')) {
+      return;
     } else {
       this.callfillfunction();
     }
