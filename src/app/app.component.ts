@@ -61,15 +61,11 @@ export class AppComponent {
         this.inputTextfinalvalue.substring(indexToInsert);
       this.pushTextToLineEnd();
     }
+    this.inputTextfinalvalue = this.inputTextfinalvalue.slice(0, -1);
     if (this.inputTextfinalvalue.startsWith(' ')) {
       return;
     } else {
       this.callfillfunction();
-    }
-  }
-  private onlySpaceSplice() {
-    if (this.inputTextfinalvalue.endsWith(' ')) {
-      this.inputTextfinalvalue = this.inputTextfinalvalue.slice(0, -1);
     }
   }
 }
