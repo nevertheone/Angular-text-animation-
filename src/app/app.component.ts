@@ -50,7 +50,8 @@ export class AppComponent {
   }
 
   private callfillfunction() {
-    const countSpaces = this.inputTextfinalvalue.length - this.inputText.length;
+    const countSpaces =
+      this.inputTextfinalvalue.length - this.inputText.length + 1;
     const indexToInsert = this.inputTextfinalvalue.indexOf(' ') - 1;
 
     for (let i = 0; i < countSpaces; i++) {
@@ -58,7 +59,6 @@ export class AppComponent {
         this.inputTextfinalvalue.substring(0, indexToInsert) +
         this.fillUpSign +
         this.inputTextfinalvalue.substring(indexToInsert);
-      this.onlySpaceSplice();
       this.pushTextToLineEnd();
     }
     if (this.inputTextfinalvalue.startsWith(' ')) {
