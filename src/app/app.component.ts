@@ -55,22 +55,21 @@ export class AppComponent {
 
     for (let i = 0; i < countSpaces; i++) {
       this.inputTextfinalvalue =
-        this.inputTextfinalvalue.substring(
-          0,
-          indexToInsert //Das ist mein Tex
-        ) + //  +
-        this.fillUpSign + // " " Und das hier muss geloopt werden
-        this.inputTextfinalvalue.substring(
-          //  +
-          indexToInsert //t + Die fillupsigns
-        );
-      this.inputTextfinalvalue = this.inputTextfinalvalue.slice(0, -1);
+        this.inputTextfinalvalue.substring(0, indexToInsert) +
+        this.fillUpSign +
+        this.inputTextfinalvalue.substring(indexToInsert);
+      this.onlySpaceSplice();
       this.pushTextToLineEnd();
     }
     if (this.inputTextfinalvalue.startsWith(' ')) {
       return;
     } else {
       this.callfillfunction();
+    }
+  }
+  private onlySpaceSplice() {
+    if (this.inputTextfinalvalue.endsWith(' ')) {
+      this.inputTextfinalvalue = this.inputTextfinalvalue.slice(0, -1);
     }
   }
 }
