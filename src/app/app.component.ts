@@ -59,7 +59,7 @@ export class AppComponent {
         this.inputTextfinalvalue.substring(indexToInsert);
       this.pushTextToLineEnd();
     }
-    if (this.inputTextfinalvalue.endsWith(' ')) {
+    if (this.inputTextfinalvalue.startsWith(' ')) {
       return;
     } else {
       this.callfillfunction();
