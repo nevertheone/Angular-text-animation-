@@ -57,6 +57,9 @@ export class AppComponent {
         this.inputTextfinalvalue.substring(0, indexToInsert) +
         this.fillUpSign +
         this.inputTextfinalvalue.substring(indexToInsert);
+
+      this.inputTextfinalvalue = this.inputTextfinalvalue.slice(0, -1);
+
       this.pushTextToLineEnd();
     }
     if (this.inputTextfinalvalue.endsWith(' ')) {
