@@ -62,20 +62,16 @@ export class AppComponent {
       this.pushTextToLineEnd();
     }
 
-    if (this.inputTextfinalvalue.startsWith(' ')) {
-      return;
-    } else {
-      this.movement();
-    }
+    // if (this.inputTextfinalvalue.startsWith(' ')) {
+    //   return;
+    // } else {
+    //   this.movement();
+    // }
   }
 
   private cutSign(input: string, index: number): string {
-    console.log(input.substring(0, input.length - index));
-    return input;
-    // if (input.endsWith(' ')) {
-    //   return;
-    // } else {
-    //   input = input.substring(0, input.length - index);
-    // }
+    if (input.endsWith(' ')) {
+      return input.substring(0, input.length - index);
+    }
   }
 }
