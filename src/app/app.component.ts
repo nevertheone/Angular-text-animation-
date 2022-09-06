@@ -26,6 +26,7 @@ export class AppComponent {
     this.init();
   }
   public submitinputvalues() {
+    this.textLines = [''];
     if (this.inputText.length > this.lineMax) {
       alert('beep');
     }
@@ -46,10 +47,10 @@ export class AppComponent {
   private init() {
     this.inputTextfinalvalue = this.inputText;
     this.fillTextUpToMaximum();
-    this.callfillfunction();
+    this.movement();
   }
 
-  private callfillfunction() {
+  private movement() {
     const countSpaces = this.inputTextfinalvalue.length - this.inputText.length;
     const indexToInsert = this.inputTextfinalvalue.indexOf(' ') - 1;
     for (let i = 0; i < countSpaces; i++) {
@@ -57,15 +58,13 @@ export class AppComponent {
         this.inputTextfinalvalue.substring(0, indexToInsert) +
         this.fillUpSign +
         this.inputTextfinalvalue.substring(indexToInsert);
-
       this.inputTextfinalvalue = this.inputTextfinalvalue.slice(0, -1);
-
       this.pushTextToLineEnd();
     }
-    if (this.inputTextfinalvalue.endsWith(' ')) {
+    if (this.inputTextfinalvalue.startsWith(' ')) {
       return;
     } else {
-      this.callfillfunction();
+      this.movement();
     }
   }
 }
