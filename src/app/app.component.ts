@@ -57,28 +57,32 @@ export class AppComponent {
     const countSpaces = this.inputTextfinalvalue.length - this.inputText.length;
     const indexToInsert = this.inputTextfinalvalue.indexOf(' ') - 1;
     for (let i = 0; i < countSpaces; i++) {
+      console.log('countspaces', countSpaces);
+      console.log('indexToInsert', indexToInsert);
       this.inputTextfinalvalue =
         this.inputTextfinalvalue.substring(0, indexToInsert) +
         this.fillUpSign +
         this.inputTextfinalvalue.substring(indexToInsert);
-      if (i < countSpaces - 1) {
-        this.inputTextfinalvalue = this.cutSign(
-          this.inputTextfinalvalue,
-          indexToInsert,
-          i
-        );
-      }
+      // if (i < countSpaces - 1) {
+      this.inputTextfinalvalue = this.cutSign(
+        this.inputTextfinalvalue,
+        indexToInsert,
+        i
+      );
+      //}
 
       this.pushTextToLineEnd();
     }
   }
 
   private cutSign(input: string, index: number, numb: number): string {
-    console.log(input);
+    console.log('cutSign');
+    console.log('input', input);
+    console.log("input.lastIndexOf(' ')", input.lastIndexOf(' '));
     const indexOfLastSpace = input.lastIndexOf(' ');
     if (indexOfLastSpace !== -1)
       return (
-        input.substring(0, input.lastIndexOf(' ')) +
+        input.substring(0, input.lastIndexOf(' ') - 1) +
         input.substring(input.lastIndexOf(' '))
       );
     else return input;
