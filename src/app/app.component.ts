@@ -58,13 +58,24 @@ export class AppComponent {
         this.inputTextfinalvalue.substring(0, indexToInsert) +
         this.fillUpSign +
         this.inputTextfinalvalue.substring(indexToInsert);
-      this.inputTextfinalvalue = this.inputTextfinalvalue.slice(0, -1);
+      this.inputTextfinalvalue = this.cutSign(this.inputTextfinalvalue, i);
       this.pushTextToLineEnd();
     }
+
     if (this.inputTextfinalvalue.startsWith(' ')) {
       return;
     } else {
       this.movement();
     }
+  }
+
+  private cutSign(input: string, index: number): string {
+    console.log(input.substring(0, input.length - index));
+    return input;
+    // if (input.endsWith(' ')) {
+    //   return;
+    // } else {
+    //   input = input.substring(0, input.length - index);
+    // }
   }
 }
