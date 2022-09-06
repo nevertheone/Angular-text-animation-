@@ -1,4 +1,5 @@
 import { Component, Input, VERSION } from '@angular/core';
+import { count } from 'rxjs';
 // Aufgabe 1: Schreibe fillTextUpToMaximum. Der Text aus "inputText" soll bis zur maximalen textlänge (variable lineMax mit fillUpSigns aufgefüllt werden)
 
 // Aufgabe 2:  Lass den Benutzer LineMax & InputText eingeben.
@@ -47,7 +48,9 @@ export class AppComponent {
   private init() {
     this.inputTextfinalvalue = this.inputText;
     this.fillTextUpToMaximum();
-    this.movement();
+    for (let i = 0; i < this.inputText.length; i++) {
+      this.movement();
+    }
   }
 
   private movement() {
@@ -58,20 +61,17 @@ export class AppComponent {
         this.inputTextfinalvalue.substring(0, indexToInsert) +
         this.fillUpSign +
         this.inputTextfinalvalue.substring(indexToInsert);
-      this.inputTextfinalvalue = this.cutSign(this.inputTextfinalvalue, i);
+      this.inputTextfinalvalue = this.cutSign(
+        this.inputTextfinalvalue,
+        indexToInsert,
+        i
+      );
+      console.log(this.inputTextfinalvalue);
       this.pushTextToLineEnd();
     }
-
-    // if (this.inputTextfinalvalue.startsWith(' ')) {
-    //   return;
-    // } else {
-    //   this.movement();
-    // }
   }
 
-  private cutSign(input: string, index: number): string {
-    if (input.endsWith(' ')) {
-      return input.substring(0, input.length - index);
-    }
+  private cutSign(input: string, index: number, numb: number): string {
+    return input.substring(0, input.lastIndexOf(' '));
   }
 }
