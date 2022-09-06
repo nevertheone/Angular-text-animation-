@@ -19,12 +19,12 @@ import { count } from 'rxjs';
 export class AppComponent {
   public lineMax: number = 40;
   public fillUpSign: string = ' '; // Verwende dieses Zeichen um Aufzufüllen. Kein normales Leerzeichen
-  public inputTextfinalvalue: string = 'Das ist mein Text';
+  public inputTextfinalvalue: string;
   public inputText: string = 'Das ist mein Text';
   public textLines = [''];
 
   constructor() {
-    this.init();
+    //this.init();
   }
   public submitinputvalues() {
     this.textLines = [''];
@@ -61,17 +61,26 @@ export class AppComponent {
         this.inputTextfinalvalue.substring(0, indexToInsert) +
         this.fillUpSign +
         this.inputTextfinalvalue.substring(indexToInsert);
-      this.inputTextfinalvalue = this.cutSign(
-        this.inputTextfinalvalue,
-        indexToInsert,
-        i
-      );
-      console.log(this.inputTextfinalvalue);
+      if (i < countSpaces - 1) {
+        this.inputTextfinalvalue = this.cutSign(
+          this.inputTextfinalvalue,
+          indexToInsert,
+          i
+        );
+      }
+
       this.pushTextToLineEnd();
     }
   }
 
   private cutSign(input: string, index: number, numb: number): string {
-    return input.substring(0, input.lastIndexOf(' '));
+    console.log(input);
+    const indexOfLastSpace = input.lastIndexOf(' ');
+    if (indexOfLastSpace !== -1)
+      return (
+        input.substring(0, input.lastIndexOf(' ')) +
+        input.substring(input.lastIndexOf(' '))
+      );
+    else return input;
   }
 }
