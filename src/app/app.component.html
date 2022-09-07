@@ -1,6 +1,8 @@
-<p *ngFor="let line of textLines">
-  <span style="background-color: lightgray">{{ line }}</span>
-</p>
+<div class="scroll">
+  <p *ngFor="let line of textLines">
+    <span style="background-color: lightgray">{{ line }}</span>
+  </p>
+</div>
 <input [(ngModel)]="lineMax" id="inputvaluemaxline" type="number" min="0" />
 <input [(ngModel)]="inputText" value="Das ist mein Text" />
 <button (click)="submitinputvalues()">Submit Values</button>
