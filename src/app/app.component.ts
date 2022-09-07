@@ -56,6 +56,7 @@ export class AppComponent {
   private movement() {
     const countSpaces = this.inputTextfinalvalue.length - this.inputText.length;
     const indexToInsert = this.inputTextfinalvalue.indexOf(' ') - 1;
+    console.log(indexToInsert);
     for (let i = 0; i < countSpaces; i++) {
       console.log('countspaces', countSpaces);
       console.log('indexToInsert', indexToInsert);
@@ -80,10 +81,11 @@ export class AppComponent {
     console.log('input', input);
     console.log("input.lastIndexOf(' ')", input.lastIndexOf(' '));
     const indexOfLastSpace = input.lastIndexOf(' ');
+    console.log('indexOfLastSpace', indexOfLastSpace);
     if (indexOfLastSpace !== -1)
       return (
-        input.substring(0, input.lastIndexOf(' ') - 1) +
-        input.substring(input.lastIndexOf(' '))
+        input.substring(0, indexOfLastSpace - 1) +
+        input.substring(indexOfLastSpace)
       );
     else return input;
   }
