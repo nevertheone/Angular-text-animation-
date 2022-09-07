@@ -88,6 +88,7 @@ export class AppComponent {
         this.inputTextfinalvalue = this.cutSignBackwards(
           this.inputTextfinalvalue
         );
+        console.log(indextoInsert);
         this.pushTextToLineEnd();
       }
     }
@@ -113,13 +114,9 @@ export class AppComponent {
   }
 
   private cutSignBackwards(input: string): string {
-    if (input.startsWith(this.fillUpSign)) {
-      return (
-        input.substring(0, input.indexOf(this.fillUpSign) - 1) +
-        input.substring(input.indexOf(this.fillUpSign) + 1)
-      );
-    } else {
-      return input;
-    }
+    return (
+      input.substring(0, input.indexOf(this.fillUpSign) - 1) +
+      input.substring(input.indexOf(this.fillUpSign) + 1)
+    );
   }
 }
