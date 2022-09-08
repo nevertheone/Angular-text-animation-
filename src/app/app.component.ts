@@ -96,6 +96,7 @@ export class AppComponent {
 
   private cutSign(input: string): string {
     const indexOfLastSpace = input.lastIndexOf(this.fillUpSign);
+    console.log(indexOfLastSpace);
     if (indexOfLastSpace !== -1) {
       if (input[indexOfLastSpace - 1] !== this.fillUpSign) {
         return (
