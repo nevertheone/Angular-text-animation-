@@ -115,9 +115,16 @@ export class AppComponent {
   }
 
   private cutSignBackwards(input: string): string {
+    // if (input[input.indexOf(' ') + 1] !== this.fillUpSign) {
     return (
-      input.substring(input.indexOf(' ') + 1) +
-      input.substring(input.indexOf(' '))
+      input.substring(0, input.lastIndexOf(' ') - 1) +
+      input.substring(input.lastIndexOf(' '))
     );
+    // } else {
+    //   return (
+    //     input.substring(0, indexOfLastSpace - 1) +
+    //     input.substring(indexOfLastSpace)
+    //   );
+    // }
   }
 }
