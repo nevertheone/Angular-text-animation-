@@ -118,7 +118,7 @@ export class AppComponent {
     // if (input[input.indexOf(' ') + 1] !== this.fillUpSign) {
     return (
       input.substring(0, input.lastIndexOf(' ') + 1) +
-      input.substring(input.indexOf(' '))
+      input.substring(input.lastIndexOf(' ') + 1)
     );
     // } else {
     //   return (
