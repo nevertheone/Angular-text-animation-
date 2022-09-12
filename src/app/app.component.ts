@@ -117,8 +117,8 @@ export class AppComponent {
   private cutSignBackwards(input: string): string {
     // if (input[input.indexOf(' ') + 1] !== this.fillUpSign) {
     return (
-      input.substring(0, input.lastIndexOf(' ') - 1) +
-      input.substring(input.lastIndexOf(' '))
+      input.substring(0, input.lastIndexOf(' ') + 1) +
+      input.substring(input.lastIndexOf(' ') + 1)
     );
     // } else {
     //   return (
