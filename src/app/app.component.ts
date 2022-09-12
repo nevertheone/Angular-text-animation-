@@ -61,9 +61,8 @@ export class AppComponent {
   }
 
   private SingleCharacterForwardMovement(isReverse: boolean) {
+    const countSpaces = this.inputTextfinalvalue.length - this.inputText.length;
     if (isReverse == false) {
-      const countSpaces =
-        this.inputTextfinalvalue.length - this.inputText.length;
       const indexToInsert =
         this.inputTextfinalvalue.indexOf(this.fillUpSign) - 1;
       for (let i = 0; i <= countSpaces + 1; i++) {
@@ -75,20 +74,18 @@ export class AppComponent {
         this.pushTextToLineEnd();
       }
     } else {
-      const countSpaces =
-        this.inputTextfinalvalue.length - this.inputText.length;
-      const indextoInsert =
+      const backwardsIndexToInsert =
         this.inputTextfinalvalue.lastIndexOf(this.fillUpSign) + 2;
-      console.log(indextoInsert);
+      console.log(backwardsIndexToInsert);
       for (let i = 0; i <= countSpaces; i++) {
         this.inputTextfinalvalue =
-          this.inputTextfinalvalue.substring(0, indextoInsert) +
+          this.inputTextfinalvalue.substring(0, backwardsIndexToInsert) +
           this.fillUpSign +
-          this.inputTextfinalvalue.substring(indextoInsert);
-        this.inputTextfinalvalue = this.cutSignBackwards(
-          this.inputTextfinalvalue
-        );
-        console.log(indextoInsert);
+          this.inputTextfinalvalue.substring(backwardsIndexToInsert);
+        // this.inputTextfinalvalue = this.cutSignBackwards(
+        //   this.inputTextfinalvalue
+        // );
+        console.log(backwardsIndexToInsert);
         this.pushTextToLineEnd();
       }
     }
@@ -115,6 +112,8 @@ export class AppComponent {
   }
 
   private cutSignBackwards(input: string): string {
+    console.log(input);
+    console.log(input.indexOf(' '));
     // if (input[input.indexOf(' ') + 1] !== this.fillUpSign) {
     return (
       input.substring(0, input.indexOf(' ') + 1) +
