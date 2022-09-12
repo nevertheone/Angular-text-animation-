@@ -116,8 +116,8 @@ export class AppComponent {
 
   private cutSignBackwards(input: string): string {
     return (
-      input.substring(0, input.indexOf(this.fillUpSign) - 1) +
-      input.substring(input.indexOf(this.fillUpSign) + 1)
+      input.substring(0, input.indexOf(' ')) +
+      input.substring(input.indexOf(' ') + this.lineMax)
     );
   }
 }
